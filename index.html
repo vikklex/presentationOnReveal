@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8" />
+      <meta
+         name="viewport"
+         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+         />
+      <title>reveal.js</title>
+      <link rel="stylesheet" href="dist/reset.css" />
+      <link rel="stylesheet" href="dist/reveal.css" />
+      <link rel="stylesheet" href="dist/theme/black.css" />
+      <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+   </head>
+   <body>
+      <div class="reveal">
+         <div class="slides">
+            <section style="color: yellow; font-size: 60px">
+               History API / Routing
+			   <aside class="notes">
+				History API / Routing
+			   </aside>
+            </section>
+            <section>
+               <section class="title" style="color: yellow; font-size: 40px">
+                  What exactly is an API?
+                  <img src="img/101-postmanaut-api.png" />
+				  <aside class="notes">
+					  Question title
+				</aside>
+               </section>
+               <section>
+                  <p style="color: rgb(11, 88, 253); font-size: 35px">
+                     API stands for application programming interface. APIs are the
+                     little pieces of code that make it possible for digital devices,
+                     software applications, and data servers to talk with each other,
+                     and they’re the essential backbone of so many services we now rely
+                     on.
+                  </p>
+				  <aside class="notes">
+					API stands for application programming interface.
+				</aside>
+               </section>
+               <section>
+                  <p style="color: yellow; font-size: 40px">What are APIs used for? </p>
+                  <ul>
+                  Lots and lots and lots of things, including:
+                  <li>APIs power desktop applications.</li>
+                  <li>APIs are behind most web applications.</li>
+                  <li>APIs make mobile applications possible.</li>
+                  <li>APIs are the integrations for no code solutions</li>
+                  <li>APIs connect devices to the internet.</li>
+                  <li>APIs define the networks—or the information passed between applications, systems, and devices and other</li>
+				  <aside class="notes">
+					  The spheres of usage
+					  </aside>
+               </section>
+            </section>
+            <section>
+               <section>
+                  <h3 style="color: yellow; font-size: 50px">There are such available APIs</h3>
+                  <ul>
+                     <li>Background Fetch API</li>
+                     <li>Background Tasks</li>
+                     <li>Bluetooth API</li>
+                     <li>Canvas API</li>
+                     <li>Clipboard API</li>
+					 <aside class="notes">
+						 APIs
+						 </aside>
+               </section>
+               <section>
+               <li>Gamepad API</li>
+               <li>Geolocation API</li>
+               <li>HTML DOM, HTML Drag and Drop API</li>
+               <li>IndexedDB, Media Session API, Navigation Timing Network Information API, Picture-in-Picture API, Pointer Events, Push API, Screen Capture API, Screen Orientation API, Storage</li>
+               <li style='color:yellow'> Finally History API</li>
+               <li>and so on</li>
+               </ul>
+			   <aside class="notes">
+				   APIs
+				   </aside>
+               </section>
+            </section>
+            <section>
+               <h3 style='color:yellow'>Let's talk in more details about History API
+                  <img src='img/scale_1200.webp'>
+               </h3>
+            </section>
+			<section>
+           
+			<section>
+				The History API is a standardized way to manipulate favorites with JavaScript. Part of this API, history navigation, was available in previous versions of HTML. The HTML5 history has the ability to include in a post, the effect of changing the URL in the address bar (without refreshing the page), and changing the current history entry. This means that the URL in the browser's address bar remains an identifier for widespread resource usage, even in applications with large, fast scripts that often don't require a full page refresh.
+				<aside class="notes">
+					The History API is a standardized way to manipulate favorites with JavaScript.
+					</aside>
+			</section>
+			<section>
+				The History API is one of those JavaScript techniques that do life of web developer easier. Without it, a single click of the Back button will jump straight out of  application. You’ll lose any in-progress work, and the user will be forced to start all over again.
+				<p>Fortunately, there’s an easy solution. We’ve had a History API that lets add to the history list and react to back and forward navigation.</p>
+				<img src='img/openclipart.org_johnny_automatic_card_trick.png'>
+				<aside class="notes">
+					The History API is one of those JavaScript techniques that do life of web developer easier.
+				</aside>
+			 </section>
+
+</section>
+<section>
+	<h2 style='color:yellow'>Browser support</h2>
+	<img src='img/canIuse.png'>
+	<p>To programmatically determine if an API is supported, use:</p>
+	<pre rel="JavaScript" class="language-javascript">
+		<code class=" language-javascript">
+			return !!(window.history && history.pushState);
+			</code>
+			</pre>
+			<aside class="notes">Browser support</aside>
+			
+</section>
+			<section>
+                  <h2 style='color:yellow'>Basics</h2>
+                  <p>To check out the features of this API it’s as simple as heading into the Developer Tools and typing history into the console. If the API is supported in your browser of choice then we’ll find a host of methods attached to this object:
+                  </p>
+                  <img src="img/history.png.webp">
+				  <aside class="notes">How to check features of this API</aside>
+               </section>
+            <section>
+               <section>
+                  <h2 style='color:yellow'>Broken Back button syndrome</h2>
+                  <p>
+                     In the old days a web page did one thing—display information. When you wanted to look at something else, you clicked a link and went to a new URL.
+                     As JavaScript grew more powerful, developers realized that every web page could be a complete application. 
+					 <aside class="notes">Brocken back button syndrome</aside>
+					</p>
+               </section>
+               <section>
+                  <p>The problem was the the Back and Forward buttons in the browser didn’t fit this new application model. For example, a user might perform a sequence of tasks in a single-page web application and then expect to use the Back button to go back a single step. Instead, the Back button would return to the previous web page, effectively shutting down the JavaScript app in the middle of whatever it was doing.
+                     Often, this behavior wasn’t intuitive. 
+					</p>
+					<aside class="notes">Brocken back button syndrome</aside>
+               </section>
+            </section>
+            <section>
+               <section>
+                  <h3>Main methods of the History object:
+                  </h3>
+                  <p><b style='color: yellow;'>window.history.length:</b> Number of entries in the current history session</p>
+				  <p>History object contains length properties, which has a number of URL’s in the session history stack,
+					For example, If the user opens a tab in the browser the length of history will be 1 , because the new tab is also a webpage. Then the user enters a URL digitalocean.com and hit enter now the length of history object will be 2 , then users go to another page medium.com, now the length of the history object will be 3 .</p>
+				  <img src='img/1_6ABFLgH1tMLz7weZ7R-lRA.png'>
+				  <aside class="notes">window.history.length</aside>
+				</section>
+				  <section>
+                  <p><b style='color: yellow;'>window.history.state:</b> Returns the current history object
+                  </p>
+                  <p><b style='color: yellow;'>window.history.go(n):</b> A method to walk through history. The offset relative to the current position is passed as an argument. If 0 is passed, then the current page will be updated. If the index is out of history, then nothing will happen.
+                  </p>
+				  <aside class="notes">window.history.state, window.history.go(n)</aside>
+				</section>
+               <section>
+                  <p><b style='color: yellow;'>window.history.back():</b> Same method as go(-1)
+                  </p>
+                  <p><b style='color: yellow;'>window.history.forward():</b>Same method as go(1)
+                  </p>
+                  <img src='img/42387601.png'>
+				  <aside class="notes">window.history.back/forward</aside>
+				</section>
+               <section>
+                  <p><b style='color: yellow;'>window.history.pushState(data, title [, url]):</b>Adds a history element</p>
+                  <p><b style='color: yellow;'>window.history.replaceState(data, title [, url]): </b>Updates the current history element
+                  </p>
+				  <aside class="notes">window.history.pushState,window.history.replaceState </aside>
+               </section>
+            </section>
+            <section>
+               <section>
+                  <h2 style='color: yellow;'>Moving back and forward</h2>
+                  <p>Imagine our browser’s history as a series of elements: There is always one element, that is our “current” element and it represents the page that we are currently seeing.History example with three pages: Home, About and Contact</p>
+                  <img src='img/history_forward.png'>
+               </section>
+               <section>
+                  <h8 style='margin: 0px;'>Fortunately for us, the functionality behind the back and forward buttons is provided to us by the browser’s history object. To go back to the previous page, we can simple call history.back() in our Javascript code and the browser will go “one element back” in our history. This way, the previous element will now be marked as the “current” element.</h8>
+                  <img src='img/history_back.png'>
+				</section>
+               <section>
+                  <p>The browser does not forget about the other elements, so that we can also go forward and make the next element the “current” one by simple calling the history.forward() method.</p>
+                  <img src='img/history_forward (1).png'>
+               </section>
+               <section>
+                  <p>We can even go multiple steps at a time (in either direction) using the history.go() function. If you provide the value 1 it will go forward one element, while calling history.go(-2) will go two elements back.</p>
+                  <img style='display: block;' src='img/history_go.png'>
+                  <p>Conveniently, calling history.go(0) will not go anywhere, and will instead just reload the page.</p>
+               </section>
+			   <aside class="notes">Description of methods </aside>
+            </section>
+            <section>
+               <section>
+                  <h2 style='color: yellow;'>window.history.pushState(data, title [, url])</h2>
+                  <img src='img/history_pushstate.png'>
+                  <p>The pushState() method is the centerpiece of the History API. It lets you add a new item into the history list for the current page.
+                     The trick is that each entry has some state attached with it — a linked piece of information or object that you set. When the user
+                     steps back through the history list, you get the corresponding state information so you can return the page to its previous version.
+                  </p>
+               </section>
+               <section>
+                  <h2 style='color: yellow;'>The pushState() method takes three arguments:</h2>
+                  <p style='color: yellow;'>Data. </p>
+                  <p>The first argument is any piece of data you want to store to represent the current state of this page. </p>
+                  <p>You’ll use this information to restore the page when the user goes back through the history list.</p>
+               </section>
+               <section>
+                  <p style='color: yellow;'>Title.</p>
+                  <p>The second argument is the page title you want the browser to show. Currently, all browsers are unified in ignoring this detail. (So you can just pass null.)</p>
+                  <p style='color: yellow;'>URL.</p>
+                  <p style='color: yellow;'>The third argument is the new version of the URL that you want to show for the page in the browser’s address bar. This lets you add better support for the Reload button and browser bookmarks.</p>
+               </section>
+               <section>
+                  <pre rel="JavaScript" class="language-javascript">
+					<code class=" language-javascript">
+						function nextSlide() {
+							let slide;
+							if (currentSlide == 4) {
+							  slide = 1;
+							} else {
+							  slide = currentSlide + 1;
+							}
+						  
+							history.pushState(slide, null, null);
+							goToSlide(slide);
+							return false;
+						  }
+						  
+						  function previousSlide() {
+							let slide;
+							if (currentSlide == 1) {
+							  slide = 4;
+							} else {
+							  slide = currentSlide - 1;
+							}
+						  
+							history.pushState(slide, null, null);
+							goToSlide(slide);
+							return false;
+						  }
+				  </code></pre>
+               </section>
+			   <aside class="notes">Description of methods history.pushState, history.replaceState  </aside>
+
+            </section>
+            <section>
+               <section>
+                  <h2 style='color: yellow;'>window.history.replaceState(data, title [, url])</h2>
+                  <p>Another way to change your browser’s history state is to use the replaceState function. It works almost exactly as the pushState method mentioned above. The big difference is, that while pushState will create a new entry in the browser’s history, replaceState will onle replace the current state.</p>
+               </section>
+               <section>
+                  <img src='img/history_replacestate (1).png'> 
+                  <h3>As a side effect of this, using the replaceState method will change the URL in the address bar, without creating a new history entry. Even though this was not the use case the developers had in mind, you could use this to change the URL in the address bar without any further side effects.</h3>
+               </section>
+            </section>
+			<aside class="notes">Description of method history.replaceState  </aside>
+
+			<section>
+				<section>
+					<p>The behavior of the replaceState and pushState methods can be displayed as follows. Let's say we have 2 entries in our history stack (labeled 1 and 2) and we need to add a third one (labeled 3).</p> 
+				<img style='display: block; margin-left: 20%;' src='img/push-vs-replace-state.jpeg'>
+				<p>	When using pushState, the entry is added to the "stack" of entries above the previous ones, while when using replaceState, the last entry (the top one in the "stack") is replaced.
+				</p>
+				</section>
+				</section>
+				<section>
+<section>
+	<span style='color: yellow; font-size: 35px;'>Accordingly </span>the History API lets interact with the browser history, trigger the browser navigation methods and change the address bar content.
+
+	It’s especially useful in combination with modern Single Page Applications, on which never make a server-side request for new pages, but instead the page is always the same: just the internal content changes.
+	
+</section>
+<section>
+	A modern JavaScript application running in the browser that does not interact with the History API, either explicitly or at the framework level, is going to be a poor experience to the user, since the back and forward buttons break.
+	
+	Also, when navigating the app, the view changes but the address bar does not.
+	
+	And also the reload button breaks: reloading the page, since there is no deep linking, is going to make the browser show a different page
+</section>
+<aside class="notes">General opinion about opportunities of the History API  </aside>
+	
+</section>
+			</section>
+            
+         </div>
+      </div>
+      <script src="dist/reveal.js"></script>
+      <script src="plugin/notes/notes.js"></script>
+      <script src="plugin/markdown/markdown.js"></script>
+      <script src="plugin/highlight/highlight.js"></script>
+      <script>
+         // More info about initialization & config:
+         // - https://revealjs.com/initialization/
+         // - https://revealjs.com/config/
+         Reveal.initialize({
+           hash: true,
+         
+           // Learn about plugins: https://revealjs.com/plugins/
+           plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+         });
+      </script>
+   </body>
+</html>
